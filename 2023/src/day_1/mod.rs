@@ -1,5 +1,7 @@
+#[allow(unused_imports)]
 use std::{fs::File, io::Read};
 
+#[allow(dead_code)]
 fn match_calibration_part_1(line: &str) -> u32 {
     let mut it = line.chars().filter_map(|character| character.to_digit(10));
 
@@ -14,6 +16,7 @@ fn match_calibration_part_1(line: &str) -> u32 {
     .unwrap()
 }
 
+#[allow(dead_code)]
 fn match_calibration_part_2(line: &str) -> u32 {
     let mut it = (0..line.len()).filter_map(|index| {
         let reduced = &line[index..];
