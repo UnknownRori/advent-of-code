@@ -2,6 +2,44 @@ const MAX_RED: i32 = 12;
 const MAX_GREEN: i32 = 13;
 const MAX_BLUE: i32 = 14;
 
+#[allow(dead_code)]
+pub fn power_sum_of_games(src: &str) -> i32 {
+    src.lines()
+        .map(|line| -> i32 {
+            let mut split = line.split(": ");
+
+            let mut game_id = split.next().unwrap().split(" ");
+            let _ = game_id.next();
+
+            let games_record = split.next().unwrap();
+            let games = games_record.split(";");
+
+            let mut red = 0;
+            let mut green = 0;
+            let mut blue = 0;
+
+            for game in games {
+                let game = game.trim().split(", ");
+                for game in game {
+                    let mut split = game.split(" ");
+                    let num = split.next().unwrap().parse::<i32>().unwrap();
+                    let game_type = split.next().unwrap();
+
+                    match game_type {
+                        "red" => red = red.max(num),
+                        "blue" => blue = blue.max(num),
+                        "green" => green = green.max(num),
+                        _ => {}
+                    }
+                }
+            }
+
+            red * green * blue
+        })
+        .sum()
+}
+
+#[allow(dead_code)]
 pub fn sum_of_games(src: &str) -> i32 {
     src.lines()
         .map(|line| -> i32 {
