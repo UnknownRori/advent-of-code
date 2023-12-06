@@ -205,6 +205,8 @@ pub fn sum_part_number(src: &str) -> u32 {
 #[cfg(test)]
 mod test {
     use crate::day_3::sum_part_number;
+    // https://www.reddit.com/r/adventofcode/comments/189q9wv/2023_day_3_another_sample_grid_to_use/
+    // Test case
 
     #[test]
     fn test_case_1() {
